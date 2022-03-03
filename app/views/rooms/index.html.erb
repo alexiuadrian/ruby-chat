@@ -1,3 +1,14 @@
+<style>
+  <%= ".msg-#{@current_user&.id}" %> {
+  background-color: #007bff !important;
+  padding: 10px;
+  }
+  <%= ".cont-#{@current_user&.id}" %> {
+  display: flex;
+  justify-content: flex-end
+  }
+</style>
+
 <div class="row">
   <div class="col-md-2">
     <h5> Hi <%= @current_user.username %> </h5>
@@ -20,7 +31,7 @@
   </div>
   <div class="col-md-10 bg-dark text-light">
   <% if @single_room %>
-    <h4 class="text-center"> <%= @single_room.name %> </h4>
+    <h4 class="text-center"> <%= @user&.username || @single_room.name %> </h4>
     <%= turbo_stream_from @single_room %>
     <div id="messages">
       <%= render @messages %>
